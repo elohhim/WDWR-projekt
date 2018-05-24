@@ -1,0 +1,78 @@
+###########################################################
+# WDWR 18042                                              #
+# Planowanie produkcj w warunkach ryzyka.                 #
+# DANE                                                    #
+# Autor: Jan Kumor                                        #
+###########################################################
+
+# Produkty
+set PRODUCTS := P1 P2 P3 P4;
+
+# Narzedzia
+set TOOLS := GRINDER VDRILL HDRILL MILLER LATHE;
+
+# Miesiące
+set MONTHS := JAN FEB MAR;
+
+# Licza narzędzi
+param toolCount :=
+	GRINDER	4
+	VDRILL	2
+	HDRILL	3
+	MILLER	1
+	LATHE	1
+	;
+
+# Czasy produkcji [h]
+param productionTimes:
+				P1		P2		P3		P4 :=
+	GRINDER		0.4		0.6		0		0	
+	VDRILL		0.2		0.1		0		0.6
+	HDRILL		0.1		0		0.7		0
+	MILLER		0.06	0.04	0		0.05
+	LATHE		0		0.05	0.02	0
+	;
+	
+# Ograniczenia rynkowe liczby sprzedawanych produktow [pcs]
+param salesMarketLimits:
+			P1		P2		P3		P4	:=
+	JAN		200		0		100		200
+	FEB		300		100		200		200
+	MAR		0		300		100		200
+	;
+	
+# Ograniczeine liczby magazynowanych produktów [pcs]
+param storageLimit := 
+	P1	200
+	P2	200
+	P3	200
+	P4	200
+	;
+
+# Koszt magazynowania produktów [pln/pcs per month]
+param storageUnitCost := 1;
+
+# Aktualny stan magazynowy [pcs]
+param startingStorage :=
+	P1	0
+	P2	0
+	P3	0
+	P4	0
+	;
+	
+# Pożądany stan magazynowy na koniec marca [pcs]
+param desiredEndStorage :=
+	P1	50
+	P2	50
+	P3	50
+	P4	40
+	;
+
+# Liczba dni roboczych w miesiącu [d]
+param workDaysPerMonth := 24;
+
+# Liczba zmian w ciągu jednego dnia roboczego
+param shiftsPerDay := 2;
+
+# Długość zmiany [h]
+param shiftHours := 8;
