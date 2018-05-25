@@ -1,4 +1,4 @@
-# OWD projekt
+# WDWR projekt
 Realizacja projektu na przedmiot *Wspomaganie decyzji w warunkach ryzyka*, semestr 18L.
 
 ### Temat: 
